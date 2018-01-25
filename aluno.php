@@ -5,10 +5,11 @@ declare(strict_types = 1);
 
 class aluno
 {
-  public $nome; //atributo
+  public $nome; //atributo de objeto
   public $dataDeNascimento; //atributo
   public $rg; //atributo
   public $turma; //atributo
+  public static $contador = 0; //atributo de classe
 
   //funcao que é chamada sempre que um aluno é criada (construtor)
 
@@ -18,10 +19,12 @@ class aluno
   {
     $this->nome = $nome;
     $this->dataDeNascimento = $dataDeNascimento;
-    echo "Aluno Criado" . PHP_EOL;
+    self::$contador++;
+    echo "Aluno Criado " . aluno::$contador . PHP_EOL;
   }
 }
 
-
 $aluno = new aluno("Lorem", Carbon::createFromDate(1940, 5, 21, 'America/Sao_Paulo'));
-$aluno->rg = 333333333;
+$aluno = new aluno("Ipsum", Carbon::createFromDate(1940, 5, 21, 'America/Sao_Paulo'));
+$aluno = new aluno("Dolor", Carbon::createFromDate(1940, 5, 21, 'America/Sao_Paulo'));
+$aluno = new aluno("Sit", Carbon::createFromDate(1940, 5, 21, 'America/Sao_Paulo'));
